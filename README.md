@@ -58,7 +58,51 @@ Machine Learning: PyTorch, Scikit-Learn, Pandas, NLTK/Spacy.
 
 Language Support: Integration with Google Translate API / Bhashini API for localized Hindi and regional language toggles.
 
+🗺 1-Week Execution Roadmap
+Day 1: Architecture, Datasets, and Setup
+Finalize and download datasets (Kaggle/WHO) for the Symptom Checker, Maternal Risk, and Mental Health models.
 
+Design UI wireframes in Figma focusing on mobile accessibility.
+
+Set up GitHub repository, CI/CD pipelines, and project boilerplates (React + FastAPI).
+
+Day 2: Data Preprocessing & Database Schema
+Clean and preprocess data (handling missing values, standardizing formats).
+
+Build the PostgreSQL/MongoDB schemas for users, medical records, and the medicine database.
+
+Develop the frontend routing and basic layout components (Navbar, Footer, 5 Feature Pages).
+
+Day 3: Core Machine Learning Development (Part 1)
+Train and validate the Maternal Risk Predictor model.
+
+Train and validate the Symptom Triage text classification model.
+
+Export models (.pkl or .onnx) and build the backend inference API endpoints to serve them.
+
+Day 4: Core Machine Learning Development (Part 2)
+Train the Mental Health Sentiment model.
+
+Build the custom OCR pipeline + NER model for the DigiVault.
+
+Populate the Medicine Database with initial salt-to-brand mapping data.
+
+Day 5: Frontend Integration & Accessibility
+Connect the React frontend forms to the FastAPI backend endpoints via Axios/Fetch.
+
+Implement state management (Redux/Context API) to handle user sessions and data flows.
+
+Implement language toggles and Web Speech API for voice inputs.
+
+Day 6: System Testing & Edge Case Handling
+Perform end-to-end testing of all 5 modules.
+
+Handle edge cases: Add loading spinners for ML predictions, error handling for blurry OCR image uploads, and fallback responses for out-of-scope symptom inputs.
+
+Optimize model inference speed (caching frequent DB queries).
+
+Day 7: Deployment & Presentation Polish
+Deploy Frontend (Vercel / Netlify).
 
 Deploy Backend & Database (Render / Railway / AWS).
 
