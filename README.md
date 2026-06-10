@@ -1,111 +1,333 @@
-Project Overview
-SwasthyaSetu is a unified, multi-lingual, mobile-first web application designed to democratize healthcare access. Built to directly address the five pillars of the Swasthya initiative, this platform leverages custom Machine Learning models and robust data engineering to provide predictive, accessible, and affordable healthcare tools to marginalized and rural populations.
+# SwasthyaSetu - Project Overview
 
-Core Features & Technical Breakdown
-1. Rural & Remote Healthcare: Smart Symptom Triage
-Concept: A localized, voice-enabled symptom checker designed for low-literacy users.
+## Introduction
 
-Input: Text or Voice (converted to text via Web Speech API) detailing current symptoms, age, and duration.
+**SwasthyaSetu** is a unified, multilingual, mobile-first web application designed to democratize healthcare access. Built to directly address the five pillars of the Swasthya initiative, the platform leverages custom Machine Learning models and robust data engineering to provide predictive, accessible, and affordable healthcare tools for marginalized and rural populations.
 
-Custom ML Model: A custom Natural Language Processing (NLP) classification model trained on clinical symptom datasets.
+---
 
-Output: Triage categorization (Green/Yellow/Red severity), immediate first-aid steps, and automated routing to the nearest rural health dispensary (PHC).
+# Core Features & Technical Breakdown
 
-2. Maternal & Child Health: Pregnancy Risk Predictor
-Concept: A proactive monitoring tool for expectant mothers and ASHA (Accredited Social Health Activist) workers.
+## 1. Rural & Remote Healthcare: Smart Symptom Triage
 
-Input: Routine vitals (Blood Pressure, Blood Sugar, Gestational Age, Weight, Hemoglobin levels).
+### Concept
+A localized, voice-enabled symptom checker designed for low-literacy users.
 
-Custom ML Model: An ensemble model (e.g., Random Forest or XGBoost) trained on maternal health risk datasets to predict complications like preeclampsia or gestational diabetes.
+### Input
+- Text input describing symptoms
+- Voice input (converted to text using Web Speech API)
+- Age
+- Symptom duration
 
-Output: Binary risk indicator (High/Low Risk) with targeted nutritional advice and alerts for healthcare workers.
+### Custom ML Model
+- Natural Language Processing (NLP) Classification Model
+- Trained on clinical symptom datasets
 
-3. Mental Health for Youth: Sentiment & Mood Tracker
-Concept: A safe, private digital journaling space that passively monitors emotional well-being.
+### Output
+- Triage categorization:
+  - 🟢 Green (Low Severity)
+  - 🟡 Yellow (Moderate Severity)
+  - 🔴 Red (High Severity)
+- Immediate first-aid recommendations
+- Automated routing to the nearest Primary Health Centre (PHC)
 
-Input: Daily text-based journal entries or interactive chat responses.
+---
 
-Custom ML Model: A custom deep-learning Sentiment Analysis model (using LSTM or a fine-tuned transformer) designed to detect linguistic markers of depression, anxiety, or acute stress.
+## 2. Maternal & Child Health: Pregnancy Risk Predictor
 
-Output: Weekly mental health heatmaps, dynamic coping mechanism suggestions, and emergency helpline prompts if severe distress is detected.
+### Concept
+A proactive monitoring tool for expectant mothers and ASHA (Accredited Social Health Activist) workers.
 
-4. Medicine Availability & Affordability: Generic Med-Match
-Concept: A cost-saving search engine for prescription drugs.
+### Input
+- Blood Pressure
+- Blood Sugar
+- Gestational Age
+- Weight
+- Hemoglobin Levels
 
-Input: Brand name of a prescribed medication.
+### Custom ML Model
+- Ensemble Learning Model
+  - Random Forest
+  - XGBoost
+- Trained on maternal health risk datasets
 
-Database Engine: A custom-built, highly indexed relational database matching proprietary brand drugs to their exact pharmacological salt compositions.
+### Predicts
+- Preeclampsia Risk
+- Gestational Diabetes Risk
+- Other pregnancy-related complications
 
-Output: A ranked list of generic alternatives, comparative cost analysis showing potential savings, and local availability status.
+### Output
+- High Risk / Low Risk classification
+- Personalized nutritional recommendations
+- Alerts and notifications for healthcare workers
 
-5. Health Documentation: Mobile Worker DigiVault
-Concept: A portable, cloud-based health locker to solve the issue of lost paper records for migrant and mobile workers.
+---
 
-Input: Smartphone photos of physical prescriptions, lab results, or vaccination cards.
+## 3. Mental Health for Youth: Sentiment & Mood Tracker
 
-Custom ML Model: A custom OCR (Optical Character Recognition) pipeline combined with a Named Entity Recognition (NER) model to extract specific medical entities (e.g., Doctor Name, Diagnosis, Medicine List) from unstructured image text.
+### Concept
+A secure and private digital journaling platform that continuously monitors emotional well-being.
 
-Output: Digitized, searchable medical summaries securely stored and easily shareable via a QR code.
+### Input
+- Daily journal entries
+- Interactive chatbot conversations
 
-🛠 Technical Stack
-Frontend: React.js / Next.js, Tailwind CSS (Mobile-responsive UI).
+### Custom ML Model
+- Deep Learning Sentiment Analysis Model
+  - LSTM Networks
+  - Fine-tuned Transformer Models
 
-Backend: Python (FastAPI or Flask) for low-latency ML model serving.
+### Detects
+- Depression indicators
+- Anxiety patterns
+- Acute stress signals
 
-Database: PostgreSQL (Relational matching for medicines) or MongoDB (Flexible document storage for user logs).
+### Output
+- Weekly mental health heatmaps
+- Personalized coping strategy suggestions
+- Emergency helpline recommendations for severe distress
 
-Machine Learning: PyTorch, Scikit-Learn, Pandas, NLTK/Spacy.
+---
 
-Language Support: Integration with Google Translate API / Bhashini API for localized Hindi and regional language toggles.
+## 4. Medicine Availability & Affordability: Generic Med-Match
 
-🗺 1-Week Execution Roadmap
-Day 1: Architecture, Datasets, and Setup
-Finalize and download datasets (Kaggle/WHO) for the Symptom Checker, Maternal Risk, and Mental Health models.
+### Concept
+A cost-saving medicine recommendation engine.
 
-Design UI wireframes in Figma focusing on mobile accessibility.
+### Input
+- Prescribed medicine brand name
 
-Set up GitHub repository, CI/CD pipelines, and project boilerplates (React + FastAPI).
+### Database Engine
+- Custom indexed relational database
+- Brand-to-salt composition mapping
 
-Day 2: Data Preprocessing & Database Schema
-Clean and preprocess data (handling missing values, standardizing formats).
+### Output
+- Generic medicine alternatives
+- Comparative price analysis
+- Estimated savings
+- Local medicine availability information
 
-Build the PostgreSQL/MongoDB schemas for users, medical records, and the medicine database.
+---
 
-Develop the frontend routing and basic layout components (Navbar, Footer, 5 Feature Pages).
+## 5. Health Documentation: Mobile Worker DigiVault
 
-Day 3: Core Machine Learning Development (Part 1)
-Train and validate the Maternal Risk Predictor model.
+### Concept
+A portable cloud-based health locker that eliminates dependency on physical medical records.
 
-Train and validate the Symptom Triage text classification model.
+### Input
+- Smartphone images of:
+  - Prescriptions
+  - Lab reports
+  - Vaccination records
 
-Export models (.pkl or .onnx) and build the backend inference API endpoints to serve them.
+### Custom ML Model
+#### OCR Pipeline
+- Optical Character Recognition for text extraction
 
-Day 4: Core Machine Learning Development (Part 2)
-Train the Mental Health Sentiment model.
+#### NER Pipeline
+- Named Entity Recognition for medical information extraction
 
-Build the custom OCR pipeline + NER model for the DigiVault.
+### Extracted Entities
+- Doctor Name
+- Diagnosis
+- Medication List
+- Test Results
+- Treatment Information
 
-Populate the Medicine Database with initial salt-to-brand mapping data.
+### Output
+- Digitized medical records
+- Searchable summaries
+- Secure cloud storage
+- QR-code-based record sharing
 
-Day 5: Frontend Integration & Accessibility
-Connect the React frontend forms to the FastAPI backend endpoints via Axios/Fetch.
+---
 
-Implement state management (Redux/Context API) to handle user sessions and data flows.
+# 🛠 Technical Stack
 
-Implement language toggles and Web Speech API for voice inputs.
+## Frontend
+- React.js / Next.js
+- Tailwind CSS
+- Mobile-responsive UI
 
-Day 6: System Testing & Edge Case Handling
-Perform end-to-end testing of all 5 modules.
+## Backend
+- Python
+  - FastAPI
+  - Flask
 
-Handle edge cases: Add loading spinners for ML predictions, error handling for blurry OCR image uploads, and fallback responses for out-of-scope symptom inputs.
+## Database
+### Relational Database
+- PostgreSQL
+  - Medicine matching
+  - Structured healthcare data
 
-Optimize model inference speed (caching frequent DB queries).
+### NoSQL Database
+- MongoDB
+  - User logs
+  - Medical document storage
 
-Day 7: Deployment & Presentation Polish
-Deploy Frontend (Vercel / Netlify).
+## Machine Learning & Data Science
+- PyTorch
+- Scikit-Learn
+- Pandas
+- NLTK
+- SpaCy
 
-Deploy Backend & Database (Render / Railway / AWS).
+## Language Support
+- Google Translate API
+- Bhashini API
+- Hindi and regional language localization
 
-Record a 2-3 minute seamless demo video highlighting the transitions between the features.
+---
 
-Finalize the hackathon pitch deck emphasizing how the tech stack solves the constraints of distance, cost, and language.
+# 🗺 1-Week Execution Roadmap
+
+## Day 1: Architecture, Datasets & Setup
+
+### Tasks
+- Finalize and download datasets (Kaggle/WHO)
+  - Symptom Checker Dataset
+  - Maternal Risk Dataset
+  - Mental Health Dataset
+- Design mobile-first UI wireframes in Figma
+- Create GitHub repository
+- Configure CI/CD pipelines
+- Initialize:
+  - React Frontend
+  - FastAPI Backend
+
+---
+
+## Day 2: Data Preprocessing & Database Schema
+
+### Tasks
+- Clean and preprocess datasets
+  - Handle missing values
+  - Normalize features
+  - Standardize formats
+
+### Database Design
+- Users
+- Medical Records
+- Medicine Mapping Database
+
+### Frontend Development
+- Routing setup
+- Navbar
+- Footer
+- Five feature pages
+
+---
+
+## Day 3: Core Machine Learning Development (Part 1)
+
+### Tasks
+#### Maternal Risk Predictor
+- Train model
+- Validate performance
+
+#### Symptom Triage Model
+- Train NLP classifier
+- Evaluate accuracy
+
+#### Deployment Preparation
+- Export models
+  - `.pkl`
+  - `.onnx`
+
+#### Backend APIs
+- Build inference endpoints
+- Connect model serving pipeline
+
+---
+
+## Day 4: Core Machine Learning Development (Part 2)
+
+### Tasks
+
+#### Mental Health Model
+- Train sentiment analysis model
+- Evaluate performance
+
+#### DigiVault Development
+- Build OCR pipeline
+- Develop NER extraction system
+
+#### Medicine Database
+- Populate initial brand-to-salt mappings
+- Optimize indexing
+
+---
+
+## Day 5: Frontend Integration & Accessibility
+
+### Tasks
+- Connect React frontend with FastAPI backend
+- Implement API communication using:
+  - Axios
+  - Fetch API
+
+### State Management
+- Redux
+- Context API
+
+### Accessibility Features
+- Language toggle support
+- Voice-based symptom input using Web Speech API
+
+---
+
+## Day 6: System Testing & Edge Case Handling
+
+### Tasks
+- End-to-end testing across all five modules
+
+### Edge Case Management
+- Prediction loading indicators
+- OCR error handling for blurry images
+- Fallback responses for unsupported symptom descriptions
+
+### Performance Optimization
+- Database query caching
+- Faster model inference
+
+---
+
+## Day 7: Deployment & Presentation Polish
+
+### Deployment
+
+#### Frontend
+- Vercel
+- Netlify
+
+#### Backend & Database
+- Render
+- Railway
+- AWS
+
+### Demo Preparation
+- Record a 2–3 minute walkthrough
+- Showcase all five healthcare modules
+
+### Final Pitch Deck
+Focus on how the platform solves:
+
+- 📍 Distance barriers
+- 💰 Healthcare affordability challenges
+- 🌐 Language accessibility issues
+
+while delivering predictive, inclusive, and scalable healthcare services to underserved communities.
+
+---
+
+# Expected Impact
+
+SwasthyaSetu combines Artificial Intelligence, Natural Language Processing, OCR, Healthcare Analytics, and Multilingual Accessibility into a single platform that empowers rural communities with:
+
+- Early disease detection
+- Maternal health monitoring
+- Mental health support
+- Affordable medicine discovery
+- Secure digital health records
+
+ultimately improving healthcare accessibility, affordability, and continuity of care across underserved populations.
