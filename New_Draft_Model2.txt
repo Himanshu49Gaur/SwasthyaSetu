@@ -1,1 +1,50 @@
+SwasthyaSetu Pillar 2: Advanced Diagnostics Roadmap
+Phase 1: Environment Initialization and Data Architecture
 
+Map the file paths for all three datasets within the Kaggle environment.
+
+Import all required libraries spanning both traditional machine learning (Scikit-Learn, XGBoost) and deep learning (PyTorch/TensorFlow).
+
+Phase 2: Module A - Maternal Health Risk Assessor (Tabular)
+
+Step 2.1: Load and clean the maternal health dataset.
+
+Step 2.2: Feature scaling and label encoding (High, Mid, Low risk).
+
+Step 2.3: Train an XGBoost/Random Forest classifier.
+
+Step 2.4: Evaluate and serialize the model to disk.
+
+Phase 3: Module B - Cardiovascular Risk Predictor (Tabular)
+
+Step 3.1: Load and clean the cardiovascular dataset (70,000 records).
+
+Step 3.2: Handle outliers in blood pressure and scale continuous variables.
+
+Step 3.3: Train a Logistic Regression or Gradient Boosting model for binary risk probability.
+
+Step 3.4: Evaluate and serialize the model to disk.
+
+Phase 4: Module C - Skin Disease Classifier (Computer Vision)
+
+Step 4.1: Establish image data generators and apply augmentations (rotation, zoom) to prevent overfitting.
+
+Step 4.2: Initialize a pre-trained Convolutional Neural Network (e.g., MobileNetV2 or ResNet50) for transfer learning.
+
+Step 4.3: Train the CNN on the image dataset.
+
+Step 4.4: Evaluate validation accuracy and serialize the deep learning model.
+
+Phase 5: Unified Inference API Construction
+
+Build a single Python class (DiagnosticRouter) that loads all three saved models into memory.
+
+Create distinct methods within the class to handle inputs appropriately based on the requested diagnostic test (e.g., routing an image array to the CNN, or biometric arrays to the respective tabular models).
+
+Standardize the output format (e.g., JSON-like dictionaries) across all models for seamless backend integration.
+
+Phase 6: System Validation and Testing
+
+Simulate real-world usage by passing random/dummy patient data through all three branches of the DiagnosticRouter.
+
+Verify prediction speeds, probability scores, and differential outputs.
